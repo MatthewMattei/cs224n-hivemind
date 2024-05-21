@@ -1,11 +1,12 @@
 '''
+File: evaluation.py
+---------------------------------
 Evaluation class for our training set. Evaluation currently done by accuracy
 
 Format Info:
 - The test_set is a list of test cases that may look like:
     - {{"user_response": "Hello!", "intermediary_model": "llama3"}, ...}
 - organizer and swarm defined in main.py
-
 '''
 import json
 import re

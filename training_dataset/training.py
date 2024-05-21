@@ -9,6 +9,7 @@ evaluation.
 '''
 import pandas as pd
 import random
+import re
 
 '''
 Method: add_to_files
@@ -36,69 +37,69 @@ def add_to_files(files: list, columns: list, output_file: str):
         with open(output_file, 'a') as file:
             # Loops through all the desired training inputs from the single file
             for training_input in desired_training_inputs:
-                # Clears out any extra line or colon characters
+                # Clears out any extraneous characters
                 training_input = training_input.strip()
                 training_input = training_input.replace('\n', '').strip()
                 training_input = training_input.replace(':', '').strip()
+                re.sub(r'[^\x00-\x7f]',r'', training_input)
 
                 # Adds cleaned prompt to file
                 file.write(training_input + '\n')
 
 # Codegemma file extraction
-codegemma_files = ['training_dataset/codegemma_datasets/code_dataset.csv']
-codegemma_columns = ['Problem']
+codegemma_files = ["training_dataset/codegemma_datasets/code_dataset.csv", "training_dataset/codegemma_datasets/prompt_tuning_train.csv",
+                    "training_dataset/codegemma_datasets/prompts-test.csv"]
+codegemma_columns = ["Problem", "improved_prompts", "improved_prompts"]
 
-codegemma_training = 'training_dataset/codegemma_training.txt'
+codegemma_training = "training_dataset/codegemma_training.txt"
 
 add_to_files(codegemma_files, codegemma_columns, codegemma_training)
 
 # Llama2 file extractions
 llama2_files = ["training_dataset/llama2_datasets/first_dataset.csv", "training_dataset/llama2_datasets/second_dataset.csv", 
-                "training_dataset/llama2_datasets/third_dataset.csv"]
-llama2_columns = ['content', 'content', 'content']
+                "training_dataset/llama2_datasets/third_dataset.csv", "training_dataset/llama2_datasets/dataset_filtered.csv"]
+llama2_columns = ["content", "content", "content", "Text"]
 
-llama2_training = 'training_dataset/llama2_training.txt'
+llama2_training = "training_dataset/llama2_training.txt"
 
 add_to_files(llama2_files, llama2_columns, llama2_training)
 
 # Llama3 file extractions
-llama3_files = ['training_dataset/llama3_datasets/quotes.csv']
-llama3_columns = ['quote']
+llama3_files = ["training_dataset/llama3_datasets/quotes.csv", "training_dataset/llama3_datasets/dataset_filtered.csv",
+                "training_dataset/llama3_datasets/cefr_leveled_texts.csv", "training_dataset/llama3_datasets/prompt_tuning.csv"]
+llama3_columns = ["quote", "Text", "text", "improved_prompts"]
 
-llama3_training = 'training_dataset/llama3_training.txt'
+llama3_training = "training_dataset/llama3_training.txt"
 
 add_to_files(llama3_files, llama3_columns, llama3_training)
 
 # Randomization and adding training information and actual answers to the evaluation file
-evaluation_data = 'training_dataset/evaluation.txt'
-evaluation_actual_answer = 'training_dataset/evaluation_answers.txt'
+evaluation_data = "training_dataset/evaluation.txt"
+evaluation_actual_answer = "training_dataset/evaluation_answers.txt"
 
 codegemma_info = []
 llama2_info = []
 llama3_info = []
 
-total_models = 3
-
 # Appends information from the dataset files to lists
-with open('training_dataset/codegemma_training.txt', 'r') as file:
+with open("training_dataset/codegemma_training.txt", 'r') as file:
     for line in file:
         codegemma_info.append(line.strip())
-with open('training_dataset/llama2_training.txt', 'r') as file:
+with open("training_dataset/llama2_training.txt", 'r') as file:
     for line in file:
         llama2_info.append(line.strip())
-with open('training_dataset/llama3_training.txt', 'r') as file:
+with open("training_dataset/llama3_training.txt", 'r') as file:
     for line in file:
         llama3_info.append(line.strip())
 
 # Cleans any previous information in the evaluation input data and evaluation actual answer file
 with open(evaluation_data, 'w') as file:
     pass
-
 with open(evaluation_actual_answer, 'w') as file:
     pass
 
-evaluation_data = 'training_dataset/evaluation.txt'
-evaluation_actual_answer = 'training_dataset/evaluation_answers.txt'
+evaluation_data = "training_dataset/evaluation.txt"
+evaluation_actual_answer = "training_dataset/evaluation_answers.txt"
 
 combined_info = [(info, 'codegemma') for info in codegemma_info] + \
                 [(info, 'llama2') for info in llama2_info] + \
@@ -107,7 +108,7 @@ combined_info = [(info, 'codegemma') for info in codegemma_info] + \
 # Randomly shuffles all the information from the lists with it's associated language
 random.shuffle(combined_info)
 
-# Splits the two files
+# Splits the two files: one for all evaluation information dn one for the answers associated to the evaluation information
 with open(evaluation_data, 'w') as eval_file, open(evaluation_actual_answer, 'w') as ans_file:
     for info, source in combined_info:
         eval_file.write(info + '\n')
