@@ -1,3 +1,12 @@
+'''
+File: training.py
+---------------------------------
+Contains functions to produce training dataset information. Currently, all of this data will be used for
+evaluation.
+
+** Possibly will be rename to include extracting training set information to test set and evaluation sets as well
+** Training: 80%, Evaluation: 20%
+'''
 import pandas as pd
 import random
 
@@ -59,3 +68,47 @@ llama3_columns = ['quote']
 llama3_training = 'training_dataset/llama3_training.txt'
 
 add_to_files(llama3_files, llama3_columns, llama3_training)
+
+# Randomization and adding training information and actual answers to the evaluation file
+evaluation_data = 'training_dataset/evaluation.txt'
+evaluation_actual_answer = 'training_dataset/evaluation_answers.txt'
+
+codegemma_info = []
+llama2_info = []
+llama3_info = []
+
+total_models = 3
+
+# Appends information from the dataset files to lists
+with open('training_dataset/codegemma_training.txt', 'r') as file:
+    for line in file:
+        codegemma_info.append(line.strip())
+with open('training_dataset/llama2_training.txt', 'r') as file:
+    for line in file:
+        llama2_info.append(line.strip())
+with open('training_dataset/llama3_training.txt', 'r') as file:
+    for line in file:
+        llama3_info.append(line.strip())
+
+# Cleans any previous information in the evaluation input data and evaluation actual answer file
+with open(evaluation_data, 'w') as file:
+    pass
+
+with open(evaluation_actual_answer, 'w') as file:
+    pass
+
+evaluation_data = 'training_dataset/evaluation.txt'
+evaluation_actual_answer = 'training_dataset/evaluation_answers.txt'
+
+combined_info = [(info, 'codegemma') for info in codegemma_info] + \
+                [(info, 'llama2') for info in llama2_info] + \
+                [(info, 'llama3') for info in llama3_info]
+
+# Randomly shuffles all the information from the lists with it's associated language
+random.shuffle(combined_info)
+
+# Splits the two files
+with open(evaluation_data, 'w') as eval_file, open(evaluation_actual_answer, 'w') as ans_file:
+    for info, source in combined_info:
+        eval_file.write(info + '\n')
+        ans_file.write(source + '\n')
