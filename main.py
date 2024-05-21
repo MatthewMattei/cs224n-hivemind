@@ -10,16 +10,22 @@ def control_loop(organizer: LLMWrapper, swarm: dict):
         inp = input("Please enter query: ")
         if inp == "exit":
             break
+        # fetches input, removes everything outside of {}
         inter_1 = re.search(r'\{.*\}', organizer.generateChatResponse(system=ORGANIZER_SYS_STATEMENT, content=inp), re.DOTALL).group(0).strip()
+        # removes weird escape characters
         inter_2 = re.sub(r'[^\x20-\x7E]', '', inter_1)
+        # formats as string
         intermediate = f"""{inter_2}"""
         try:
+            # converts to dictionary
             parsed_inter = json.loads(intermediate)
         except:
             print("Intermediate product failed to produce a dict, aborting.")
             print(intermediate)
             continue
         try:
+            # passes the updated prompt and context to final model
+            # swarm[parsed_inter["model"]] is the chosen model
             final = swarm[parsed_inter["model"]].generateChatResponse(system=parsed_inter["prompt-engineered-context"], content=parsed_inter["rephrased-prompt"])
         except:
             print("Intermediate product failed to produce correct dict keys, aborting.")

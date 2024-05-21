@@ -54,6 +54,9 @@ def few_shot_prompting(input, models_with_descriptions):
     + """Your answer should only return the name of the chosen model and nothing else"""
     return few_shot_context
 
+#Chain of thought prompting is similar to few-shot prompting, but with the examples it provides it walks the LLM through its
+#logic so it can build on that. A list of examples inputs are provided as well as a sample thought process and solution for each.
+# The queen bee will mirror this logic when determining which model to send the actual input to. 
 def chain_of_thought_prompting(input, models_with_descriptions):
     chain_of_thought_context = """You will be provided with a list of models and you must determine which one an input should be passed to. Here are 
     some examples of inputs and the respective models they should be passed to:
@@ -78,12 +81,25 @@ def chain_of_thought_prompting(input, models_with_descriptions):
     model and nothing else."""
     return chain_of_thought_context
 
+# Reflexion provides a type of self evaluation on an input. It provides a sample output, then generates an evaluation OF that output,
+# then uses that evaluation to determine whether the original output needs to be modified or not. This way, the queen bee has a chance to
+# provide herself with feedback and teach herself. This function is currently unfinished—it needs to be determined whether the
+#output_1 and output_2 will be generated from the same model that everything else is running on or a DIFFERENT model altogether.
 def reflexion_prompting(input, models_with_descriptions):
+    output_1 = ""
+    output_2 = ""
     input_1 = """You will be provided with a list of models and you must determine which one an input should be passed to. The list of models
     and their respective descriptions is """ + models_with_descriptions + """and the input is """ + input + """. Walk me through
     your thought process on why you're choosing the model you are. Make sure to specify both the original input and the
     model you're choosing in your """
-    # run this in the LLM, store the output in output_1
-    input_2 = """An LLM is attempting to determine which finetuned model an input should """
-    return 
+    # run this in an LLM, store the output in output_1
+    input_2 = """An LLM is attempting to determine which finetuned model an input should should be passed to to best optimize
+    responses. The list of models and their descriptions is """ + models_with_descriptions + """The LLM's reasoning was""" + output_1 + """Provide 
+    an evaluation on their thought process and see if it can be improved or refined, though don't make unnecessary criticisms."""
+    # run this in an LLM, store the output in output_2
+    input_3 = """An LLM is attempting to determine which finetuned model an input should should be passed to to best optimize
+    responses. The list of models and their descriptions is """ + models_with_descriptions + """The LLM's reasoning was """ + output_1 + """An evaluation
+    has been provided, it said: """ + output_2 + """Based on the original output and the evaluation provided, make a final decision on
+    which model the original input should be passed to. You should return nothing but the final model"""
+    return input_3
     
