@@ -43,7 +43,12 @@ def evaluate(organizer: LLMWrapper, eval_inputs: str, eval_answers: str, line_co
         inp = inp_f.readline()
         answer = ans_f.readline().strip()
         # fetches input, removes everything outside of {}
-        inter_1 = re.search(r'\{.*\}', organizer.generateChatResponse(system=ORGANIZER_SYS_STATEMENT, content=inp), re.DOTALL).group(0).strip()
+        try:
+            inter_1 = re.search(r'\{.*\}', organizer.generateChatResponse(system=ORGANIZER_SYS_STATEMENT, content=inp), re.DOTALL).group(0).strip()
+        except:
+            print("Model response doesn't include json.")
+            print("Ratio so far: " + str(total/line_count))
+            continue
         # removes weird escape characters
         inter_2 = re.sub(r'[^\x20-\x7E]', '', inter_1)
         # formats as string
@@ -55,9 +60,11 @@ def evaluate(organizer: LLMWrapper, eval_inputs: str, eval_answers: str, line_co
             print("Intermediate product failed to produce a dict, aborting.")
             print(intermediate)
             continue
-        print(parsed_inter["model"])
-        total += 1 if parsed_inter["model"].lower().replace(" ", "") == answer else 0
-        total += 1 if parsed_inter["model"].lower().replace(" ", "") == "llama2-english" and answer == "llama2-chinese" else 0
+        try:
+            print(parsed_inter["model"])
+            total += 1 if parsed_inter["model"].lower().replace(" ", "") == answer else 0
+        except:
+            print("Model response malformed.")
         print("Ratio so far: " + str(total/line_count))
     return total/line_count
 
