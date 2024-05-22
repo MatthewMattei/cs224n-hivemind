@@ -11,7 +11,8 @@ Given the following prompt, please fill in each json category with the following
 important that I get the best results back (no hallucinations, lots of real information).
 
 Remember that whatever you output will be immediately passed to a large language model, so be careful in your formatting. Additionally,
-your only job is to classify and rephrase the input, do not answer any part of it. I am going to give you further instructions
+your only job is to classify and rephrase the input, do not answer any part of it. For any time you mention a model name,
+repeat it exactly as I describe to you (do not change/describe it AT ALL). I am going to give you further instructions
 for how to handle choosing the model specifically (step 2). Do not overwrite your previous instructions, but keep the following in mind:\n
 """
 

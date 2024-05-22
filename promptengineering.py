@@ -25,9 +25,9 @@ def few_shot_prompting(input, models_with_descriptions):
     Input: How do I implement a binary search algorithm in Java?
     Output: "codegemma"
 
-    Here is a list of models you can choose from and their respective descriptions: \"""" + str(models_with_descriptions) + """\". With all of this in mind, 
+    Here is a list of models you can choose from and their respective descriptions: \"""" + str(models_with_descriptions) + f"""\". With all of this in mind, 
     I am going to give you an input. Prompt: """ + str(input) + """Remember, this is to fill in the second Json category, the
-    model selection. Make sure to fill in each Json category with the prompt engineering context, the model selection, and
+    model selection. Make sure to fill in each Json category with the prompt engineering context, the model, and
     the prompt rephrasing."""
     return few_shot_context
 
