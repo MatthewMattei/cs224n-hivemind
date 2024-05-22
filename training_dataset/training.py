@@ -3,9 +3,6 @@ File: training.py
 ---------------------------------
 Contains functions to produce training dataset information. Currently, all of this data will be used for
 evaluation.
-
-** Possibly will be rename to include extracting training set information to test set and evaluation sets as well
-** Training: 80%, Evaluation: 20%
 '''
 import pandas as pd
 import random
@@ -102,7 +99,7 @@ evaluation_data = "training_dataset/evaluation.txt"
 evaluation_actual_answer = "training_dataset/evaluation_answers.txt"
 
 combined_info = [(info, 'codegemma') for info in codegemma_info] + \
-                [(info, 'llama2') for info in llama2_info] + \
+                [(info, 'llama2-chinese') for info in llama2_info] + \
                 [(info, 'llama3') for info in llama3_info]
 
 # Randomly shuffles all the information from the lists with it's associated language
