@@ -35,8 +35,8 @@ def few_shot_prompting(input, models_with_descriptions):
 #logic so it can build on that. A list of examples inputs are provided as well as a sample thought process and solution for each.
 # The queen bee will mirror this logic when determining which model to send the actual input to. 
 def chain_of_thought_prompting(input, models_with_descriptions):
-    chain_of_thought_context = """You will be provided with a list of models and you must determine which one an input should be passed to. Here are 
-    some examples of inputs and the respective models they should be passed to:
+    chain_of_thought_context = """You will be provided with a list of models and you must determine which one will most accurately and holistically answer the prompt. 
+    Here are some examples of inputs and the respective models that should be chosen:
 
     Input: What is the capital of France?
     Thought Process: This is an English-language input asking a geography question that has a definitive answer. This should be passed to
@@ -53,8 +53,10 @@ def chain_of_thought_prompting(input, models_with_descriptions):
     is good at generating code.
     Output: codegemma
 
-    Here is a list of models you can choose from and their respective descriptions: """ + str(models_with_descriptions) + """. With all of this in mind, I am going to give
-    you an input. Prompt: """ + str(input)
+    Here is a list of models you can choose from and their respective descriptions: \"""" + str(models_with_descriptions) + f"""\". With all of this in mind, 
+    I am going to give you an input. Prompt: """ + str(input) + """Remember, this is to fill in the second Json category, the
+    model selection. Make sure to fill in each Json category with the prompt engineering context, the model, and
+    the prompt rephrasing."""
     return chain_of_thought_context
 
 # Reflexion provides a type of self evaluation on an input. It provides a sample output, then generates an evaluation OF that output,

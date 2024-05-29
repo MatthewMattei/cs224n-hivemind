@@ -1,4 +1,4 @@
-from promptengineering import few_shot_prompting 
+from promptengineering import few_shot_prompting, chain_of_thought_prompting
 import ollama
 
 # Prompt engineering context for organizer model to most effectively transform and format intermediate product.
@@ -27,6 +27,6 @@ class LLMWrapper:
     # Assumes organizer model is capable of json mode
     def generateChatResponse(self, system, content):
         if self.role == "organizer":
-            content = ORGANIZER_PROMPT_CONTEXT + few_shot_prompting(content, self.hive_descriptions)
+            content = ORGANIZER_PROMPT_CONTEXT + chain_of_thought_prompting(content, self.hive_descriptions)
         messages = [{"role": "system", "content": system}, {"role": "user", "content": content}]
         return ollama.chat(model=self.model_name, messages=messages)['message']['content']
