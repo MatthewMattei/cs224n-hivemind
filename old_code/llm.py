@@ -1,4 +1,4 @@
-from promptengineering import few_shot_prompting, chain_of_thought_prompting
+from old_code.promptengineering import few_shot_prompting, chain_of_thought_prompting
 import ollama
 
 # Prompt engineering context for organizer model to most effectively transform and format intermediate product.
