@@ -6,7 +6,7 @@ from datasets import Dataset
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 
-TOGETHER_API_KEY = "88f4ba07e0ebf8e39906740f4849c2ce434c03c4bbb193022b30599a30e8a580"
+TOGETHER_API_KEY = "redacted"
 
 CLIENT = Together(api_key=TOGETHER_API_KEY)
 
