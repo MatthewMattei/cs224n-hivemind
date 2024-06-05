@@ -9,7 +9,6 @@ import google.generativeai as genai
 from keys import TOGETHER_API_KEY, GEMINI_API_KEY
 
 CLIENT = Together(api_key=TOGETHER_API_KEY)
-genai.configure(api_key=GEMINI_API_KEY)
 
 CLASSIFIER = {"model": BertForSequenceClassification.from_pretrained("google-bert/bert-base-uncased"), 
               "tokenizer": BertTokenizer.from_pretrained("google-bert/bert-base-uncased")}

@@ -83,7 +83,7 @@ other_df = pd.DataFrame(columns=['text'])
 
 def combine_columns(row):
     answer = row["answer"]
-    return '<human>: question: ' + row['question'] + ' answer choices: ' + str({i: v for i,v in enumerate(row['choices'])}) + f"\n<bot>: {str(answer)}"
+    return '<human>: question: ' + row['question'] + ' answer choices: ' + str({i: v for i,v in enumerate(row['choices'])})
 
 for cat in subcategories:
     dataset = load_dataset("cais/mmlu", cat)
