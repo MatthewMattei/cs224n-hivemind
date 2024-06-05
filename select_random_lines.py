@@ -15,6 +15,6 @@ def select_random_lines(input_file, output_file, num_lines=250):
             f.write(line)
 
 # Usage example:
-input_file = 'input.jsonl'
-output_file = 'output.jsonl'
+input_file = '/Users/matthsu/Documents/GitHub/cs224n/other_eval.jsonl'
+output_file = '/Users/matthsu/Documents/GitHub/cs224n/other_eval_selection.jsonl'
 select_random_lines(input_file, output_file)
