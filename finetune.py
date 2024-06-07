@@ -3,16 +3,16 @@ from together import Together
 
 client = Together(api_key="af55a5d60e08e7064287b3099b7c22c18366a4bee70bcc4e25beb839a40ce8c2")
 
-# resp = client.files.upload(file="classify2.jsonl") # uploads a file
+# resp = client.files.upload(file="classify3.jsonl") # uploads a file
 # filesUploaded = client.files.list()
 # print(filesUploaded)
 
 resp = client.fine_tuning.create(
   training_file = 'file-57c7bc94-5919-40b9-82b1-076432888dd5',
-  model = 'mistralai/Mixtral-8x7B-v0.1',
-  n_epochs = 3,
+  model = 'meta-llama/Meta-Llama-3-8B',
+  n_epochs = 4,
   n_checkpoints = 1,
-  batch_size = 16,
+  batch_size = 8,
   learning_rate = 1e-5,
 )
 
@@ -23,3 +23,4 @@ resp = client.fine_tuning.create(
 # 5) classifier - file-26cf65b5-fad7-4bc7-91de-adceb1339c9c - ft-93b19d19-6521-47dc-aa48-1ffe7172ca1b - mdmattei@stanford.edu/Meta-Llama-3-8B-2024-06-05-03-45-44
 # 6) CHAD - file-7462b77c-15d7-4dde-88d5-7c131994301e - ft-f47a4f1b-fa7f-42db-8ce0-467de233f517 - mdmattei@stanford.edu/Meta-Llama-3-8B-2024-06-05-04-36-18
 # 7) classifier2 - file-57c7bc94-5919-40b9-82b1-076432888dd5 - ft-3e371956-9e25-43ee-b351-c14b84e037da - mdmattei@stanford.edu/Meta-Llama-3-8B-2024-06-06-21-14-24-9a675604
+# 8) classifier3 - file-ee660f4a-afab-4b78-a0e8-903fa0600593 - 

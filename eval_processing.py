@@ -1,7 +1,7 @@
 # Imports
 import json
 
-DATA_PATH = "SOCIAL_SCIENCES_EVALS.jsonl"
+DATA_PATH = "CLASSIFIER_EVALS.jsonl"
 check = "overall_eval_selection_unformatted.jsonl"
 
 results = []
@@ -23,7 +23,11 @@ with open("processed_" + DATA_PATH, 'w') as jsonl_file:
     correct_social_sciences = 0
     correct_other = 0
     for i in range(len(results)):
-        outcome = "correct" if str(results[i]) == answers[i][0] or str(results[i]) == answers[i][1] or str(results[i]) == "niche" or str(results[i]) == "social sciences" else "incorrect"
+        outcome = "correct" if str(results[i]) == answers[i][0] or str(results[i]) == answers[i][1] else "incorrect"
+        if results[i] == "social_sciences" and "social sciences" == answers[i][1]:
+            outcome = "correct"
+        if results[i] == "niche" and "other" == answers[i][1]:
+            outcome = "correct"
         if outcome == "correct":
             correct_total += 1
             if answers[i][1] == "STEM":
