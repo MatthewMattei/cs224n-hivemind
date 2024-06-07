@@ -1,37 +1,42 @@
 # Imports
 from together import Together
-from datasets import Dataset
-import pandas as pd
-import numpy as np
-import google.generativeai as genai
 from keys import TOGETHER_API_KEY
+import json
+import requests
 
-CLASSIFIER = ""
+MODEL = "mdmattei@stanford.edu/Meta-Llama-3-8B-2024-06-06-21-14-24-9a675604"
 
 CLIENT = Together(api_key=TOGETHER_API_KEY)
 
-MODEL_OPTIONS = {
-    "STEM": "",
-    "humanities": "",
-    "other": "",
-    "social sciences": ""
-}
+DATA_PATH = "overall_eval_selection.jsonl"
 
-def classify(prompt):
-    response = CLIENT.completions.create(
-    model=CLASSIFIER,
-    prompt=prompt,
-    max_tokens=512
-    )
-    return response.choices[0].text.split(" ")[-1]
+def get_model_response(prompt):
+    try:
+        response = CLIENT.completions.create(
+        model=MODEL,
+        prompt=prompt,
+        max_tokens=512
+        )
+        return response.choices[0].text.split(" ")[-1]
+    except requests.RequestException as e:
+        print(f"Error making requests to {prompt, MODEL}: {e}")
+        return ""
 
-def respond(prompt, model_choice):
-    response = CLIENT.completions.create(
-    model=model_choice,
-    prompt=prompt,
-    max_tokens=512
-    )
-    return int(response.choices[0].text.split(" ")[-1])
+results = []
 
-def eval_architecture(data_path):
+f = open(DATA_PATH, 'r')
+lines = f.readlines()
+for i, line in enumerate(lines):
+     print("Finished: " + str(i))
+     if i < 10:
+        print(results)
+     results.append(get_model_response(json.loads(line)["text"]))
     
+jsonl_file_path = f'{"CLASSIFY2"}_EVALS.json'
+with open(jsonl_file_path, 'w') as jsonl_file:
+        for key, value in enumerate(results):
+            json_line = json.dumps({key: value})
+            jsonl_file.write(json_line + '\n')
+    
+print(f"Results saved to {jsonl_file_path}")
+
