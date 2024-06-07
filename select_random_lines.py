@@ -1,7 +1,7 @@
 import json
 import random
 
-def select_random_lines(input_file, output_file, num_lines=250):
+def select_random_lines(input_file, output_file, num_lines=333):
     # Read all lines from the input JSONL file
     with open(input_file, 'r') as f:
         lines = f.readlines()
@@ -15,6 +15,6 @@ def select_random_lines(input_file, output_file, num_lines=250):
             f.write(line)
 
 # Usage example:
-input_file = '/Users/matthsu/Documents/GitHub/cs224n/other_eval.jsonl'
-output_file = '/Users/matthsu/Documents/GitHub/cs224n/other_eval_selection.jsonl'
+input_file = '/Users/matthsu/Documents/GitHub/cs224n/humanities_eval_2.jsonl'
+output_file = '/Users/matthsu/Documents/GitHub/cs224n/humanities_eval_2_selection.jsonl'
 select_random_lines(input_file, output_file)

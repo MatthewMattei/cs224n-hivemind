@@ -25,12 +25,11 @@ def merge_and_shuffle_jsonl_files(input_files, output_file):
                 continue
 
 input_files = [
-    '/Users/matthsu/Documents/GitHub/cs224n/humanities_eval_selection.jsonl',
-    '/Users/matthsu/Documents/GitHub/cs224n/other_eval_selection.jsonl',
-    '/Users/matthsu/Documents/GitHub/cs224n/social_science_eval_selection.jsonl',
-    '/Users/matthsu/Documents/GitHub/cs224n/stem_eval_selection.jsonl'
+    '/Users/matthsu/Documents/GitHub/cs224n/humanities_eval_2_selection.jsonl',
+    '/Users/matthsu/Documents/GitHub/cs224n/social_science_eval_2_selection.jsonl',
+    '/Users/matthsu/Documents/GitHub/cs224n/stem_eval_2_selection.jsonl'
 ]
-output_file = '/Users/matthsu/Documents/GitHub/cs224n/overall_eval_selection_unformatted.jsonl'
+output_file = '/Users/matthsu/Documents/GitHub/cs224n/overall_eval_2_selection_unformatted.jsonl'
     
 merge_and_shuffle_jsonl_files(input_files, output_file)
 print(f"Merged and shuffled files into {output_file}")

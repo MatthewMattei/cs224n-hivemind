@@ -16,6 +16,6 @@ def csv_to_jsonl(input_csv_file, output_jsonl_file):
                 jsonl_file.write(json_object + '\n')
 
 # Usage example:
-input_csv_file = '/Users/matthsu/Documents/GitHub/cs224n/other.csv'
-output_jsonl_file = '/Users/matthsu/Documents/GitHub/cs224n/other_eval.jsonl'
+input_csv_file = '/Users/matthsu/Documents/GitHub/cs224n/stem.csv'
+output_jsonl_file = '/Users/matthsu/Documents/GitHub/cs224n/stem_eval_2.jsonl'
 csv_to_jsonl(input_csv_file, output_jsonl_file)
