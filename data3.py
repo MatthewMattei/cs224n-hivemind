@@ -74,7 +74,7 @@ categories = {
 }
 
 data = []
-with open('overall_eval_selection_unformatted.jsonl') as f:
+with open('overall_eval_2_selection_unformatted.jsonl') as f:
     for line in f:
         data.append(json.loads(line))
 
@@ -82,8 +82,8 @@ with open('overall_eval_selection_unformatted.jsonl') as f:
 eval_df = pd.DataFrame(data)
 
 def combine_columns(row):
-    return '<human>: question: ' + row['question'] + str({k: v for k, v in enumerate(re.findall(r"'(.*?)'", row["choices"]))}) + "STEM, humanities, social sciences, <bot>: "
+    return '<human>: question: ' + row['question'] + str({k: v for k, v in enumerate(re.findall(r"'(.*?)'", row["choices"]))}) + "\n<bot>: "
 
 eval_df['text'] = eval_df.apply(combine_columns, axis=1)
 eval_df = eval_df[['text']]
-eval_df.to_json("classify_eval.jsonl", orient="records", lines=True)
+eval_df.to_json("classify3_eval.jsonl", orient="records", lines=True)
