@@ -24,7 +24,10 @@ new_file_path = "random_choice_total_consensus_eval.jsonl"
 def determine_consensus(choice1, answer1, choice2, answer2, choice3, answer3, choice4, answer4):
     choices = [choice1, choice2, choice3, choice4]
     answers = [answer1, answer2, answer3, answer4]
-    if (answer1 != answer2 != answer3 != answer4) or (answer1 == answer2 == answer3 == answer4):
+    final_choices = []
+    if (answer1 != answer2 != answer3 != answer4):
+        return random.choice(choices)
+    if (answer1 == answer2 == answer3 == answer4):
         return choice1
     else:
         answer_count = [0, 0, 0, 0]
@@ -33,7 +36,8 @@ def determine_consensus(choice1, answer1, choice2, answer2, choice3, answer3, ch
         consensus = answer_count.index(max(answer_count))
         for i in range(4):
             if answers[i] == str(consensus):
-                return choices[i]
+                final_choices.append(choices[i])
+                return random.choice(final_choices)
 
 
 for i in range(5):

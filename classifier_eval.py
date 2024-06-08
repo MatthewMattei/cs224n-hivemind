@@ -1,7 +1,7 @@
 # Imports
 import json
 
-paths = ["processed_CLASSIFY2_EVALS.jsonl", "processed_STEM_EVALS.jsonl", "processed_HUMANITIES_EVALS.jsonl", "processed_SOCIAL_SCIENCES_EVALS.jsonl", "processed_OTHER_EVALS.jsonl"]
+paths = ["processed_CLASSIFIER_EVALS.jsonl", "processed_STEM_EVALS.jsonl", "processed_HUMANITIES_EVALS.jsonl", "processed_SOCIAL_SCIENCES_EVALS.jsonl", "processed_OTHER_EVALS.jsonl"]
 
 mega_lines = []
 
@@ -17,13 +17,13 @@ other_correct = 0
 misclassified_correct = 0
 misclassified_wrong = 0
 
-new_file_path = "perfect_pipeline_eval.jsonl"
+new_file_path = "original_classifier_pipeline_eval.jsonl"
 
 for i in range(5):
     mega_lines.append(open(paths[i], 'r').readlines())
 
 for i in range(1000):
-    choice = json.loads(mega_lines[0][i])["Correct_Answer"][1]
+    choice = json.loads(mega_lines[0][i])["Guessed_Answer"]
     if choice == "STEM":
         stem_total += 1
         if json.loads(mega_lines[1][i])["Outcome"] == "correct":
