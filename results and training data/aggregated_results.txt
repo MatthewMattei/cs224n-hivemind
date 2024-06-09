@@ -40,15 +40,15 @@ Classifier 2 (input is passed to model that Classifier 2 chose):
 Perfect Pipeline (input is passed to "correct" model every time):
 {"total_correct": "653", "stem_total": "250", "stem_correct": "173", "humanities_total": "250", "humanities_correct": "153", "social_total": "250", "social_correct": "172", "other_total": "250", "other_correct": "155"}
 
-Random Choice (input is passed to one of the four models at random):
+Random Classifier (input is passed to one of the four models at random):
 {"total_correct": "642", "stem_total": "279", "stem_correct": "179", "humanities_total": "219", "humanities_correct": "152", "social_total": "254", "social_correct": "161", "other_total": "248", "other_correct": "150"}
 
 ~for the following ones, ignore the statistics except "total_correct" as they are biased~
 
-Random Choice Consensus (input is passed to three models at random, the answer with the most selections between them is selected):
+Random Majority Classifier (input is passed to three models at random, the answer with the most selections between them is selected):
 {"total_correct": "656", "stem_total": "260", "stem_correct": "165", "humanities_total": "231", "humanities_correct": "153", "social_total": "276", "social_correct": "189", "other_total": "233", "other_correct": "149"}
 
-Random Choice Total Consensus (input is passed to all four models, the answer with the most selections between them is selected, ties broken randomly):
+Majority Classifier (input is passed to all four models, the answer with the most selections between them is selected, ties broken randomly):
 {"total_correct": "645", "stem_total": "883", "stem_correct": "603", "humanities_total": "69", "humanities_correct": "31", "social_total": "32", "social_correct": "7", "other_total": "16", "other_correct": "4"}
 
 
