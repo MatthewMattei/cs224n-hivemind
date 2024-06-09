@@ -1,10 +1,5 @@
-# Step 1: Import necessary libraries
-import time
 from datasets import load_dataset
 import pandas as pd
-import numpy as np
-import json
-import re
 
 subcategories = {
     "abstract_algebra": ["math"],

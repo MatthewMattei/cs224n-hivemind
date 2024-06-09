@@ -1,8 +1,5 @@
-# Step 1: Import necessary libraries
-import time
 from datasets import load_dataset
 import pandas as pd
-import numpy as np
 
 subcategories = {
     "abstract_algebra": ["math"],

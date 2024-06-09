@@ -55,37 +55,21 @@ for i in range(1000):
         if json.loads(mega_lines[1][i])["Outcome"] == "correct":
             total_correct += 1
             stem_correct += 1
-        #     if json.loads(mega_lines[0][i])["Correct_Answer"][1] != "STEM":
-        #         misclassified_correct += 1
-        # elif json.loads(mega_lines[0][i])["Correct_Answer"][1] != "STEM":
-        #     misclassified_wrong += 1
     if choice == "humanities":
         humanities_total += 1
         if json.loads(mega_lines[2][i])["Outcome"] == "correct":
             total_correct += 1
             humanities_correct += 1
-        #     if json.loads(mega_lines[0][i])["Correct_Answer"][1] != "humanities":
-        #         misclassified_correct += 1
-        # elif json.loads(mega_lines[0][i])["Correct_Answer"][1] != "humanities":
-        #     misclassified_wrong += 1
     if choice == "social sciences":
         social_total += 1
         if json.loads(mega_lines[3][i])["Outcome"] == "correct":
             total_correct += 1
             social_correct += 1
-        #     if json.loads(mega_lines[0][i])["Correct_Answer"][1] != "social sciences":
-        #         misclassified_correct += 1
-        # elif json.loads(mega_lines[0][i])["Correct_Answer"][1] != "social sciences":
-        #     misclassified_wrong += 1
     if choice == "other":
         other_total += 1
         if json.loads(mega_lines[4][i])["Outcome"] == "correct":
             total_correct += 1
             other_correct += 1
-        #     if json.loads(mega_lines[0][i])["Correct_Answer"][1] != "other":
-        #         misclassified_correct += 1
-        # elif json.loads(mega_lines[0][i])["Correct_Answer"][1] != "other":
-        #     misclassified_wrong += 1
 
 with open(new_file_path, 'w') as jsonl_file:
     json_line = json.dumps({"total_correct": str(total_correct), 
@@ -97,8 +81,6 @@ with open(new_file_path, 'w') as jsonl_file:
                             "social_correct": str(social_correct), 
                             "other_total": str(other_total), 
                             "other_correct": str(other_correct),
-                            # "misclassified_correct": str(misclassified_correct),
-                            # "misclassified_wrong": str(misclassified_wrong)
                             })
     jsonl_file.write(json_line + '\n')
 

@@ -1,8 +1,4 @@
-# Step 1: Import necessary libraries
-import time
-from datasets import load_dataset
 import pandas as pd
-import numpy as np
 import json
 import re
 
@@ -78,7 +74,6 @@ with open('overall_eval_2_selection_unformatted.jsonl') as f:
     for line in f:
         data.append(json.loads(line))
 
-# Convert the list of dictionaries to a DataFrame
 eval_df = pd.DataFrame(data)
 
 def combine_columns(row):

@@ -1,6 +1,4 @@
 import pandas as pd
-import random
-import re
 
 PARQUET_DATA_FILE = "auxiliary_data.parquet"
 CSV_DATA_FILE = "auxiliary_data.csv"

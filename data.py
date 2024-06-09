@@ -1,13 +1,5 @@
-# Step 1: Import necessary libraries
-import time
 from datasets import load_dataset
 import pandas as pd
-import numpy as np
-import google.generativeai as genai
-from keys import GEMINI_API_KEY
-genai.configure(api_key=GEMINI_API_KEY)
-
-ENGINEER = genai.GenerativeModel('gemini-1.5-flash')
 
 subcategories = {
     "abstract_algebra": ["math"],
@@ -82,7 +74,6 @@ humanities_df = pd.DataFrame(columns=['text'])
 other_df = pd.DataFrame(columns=['text'])
 
 def combine_columns(row):
-    answer = row["answer"]
     return '<human>: question: ' + row['question'] + ' answer choices: ' + str({i: v for i,v in enumerate(row['choices'])})
 
 for cat in subcategories:
