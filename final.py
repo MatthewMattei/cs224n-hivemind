@@ -1,15 +1,15 @@
 from together import Together
-from keys import TOGETHER_API_KEY
+from keys import TOGETHER_API_KEY, CLASSIFIER_MODEL, STEM_MODEL, HUMANITIES_MODEL, SOCIAL_SCIENCES_MODEL, NICE_MODEL
 
 CLIENT = Together(api_key=TOGETHER_API_KEY)
 
-CLASSIFIER = "mdmattei@stanford.edu/Meta-Llama-3-8B-2024-06-06-21-14-24-9a675604"
+CLASSIFIER = CLASSIFIER_MODEL
 
 HIVE_MODELS = {
-    "STEM": "mdmattei@stanford.edu/Meta-Llama-3-8B-2024-06-05-00-23-38-c6149bf9",
-    "humanities": "mdmattei@stanford.edu/Meta-Llama-3-8B-2024-06-04-23-25-37-12c540c5",
-    "social_sciences": "mdmattei@stanford.edu/Meta-Llama-3-8B-2024-06-04-23-26-33-e15174ab",
-    "nice": "mdmattei@stanford.edu/Meta-Llama-3-8B-2024-06-04-23-20-24-4c9b70b7"
+    "STEM": STEM_MODEL,
+    "humanities": HUMANITIES_MODEL,
+    "social_sciences": SOCIAL_SCIENCES_MODEL,
+    "nice": NICE_MODEL
 }
 
 def classify(prompt):

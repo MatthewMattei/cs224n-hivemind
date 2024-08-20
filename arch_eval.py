@@ -1,12 +1,10 @@
 from together import Together
-from keys import TOGETHER_API_KEY
+from keys import TOGETHER_API_KEY, ARCH_EVAL_MODEL
 import json
 import requests
 
-MODEL = "mdmattei@stanford.edu/Meta-Llama-3-8B-2024-06-07-03-50-36-affd94b3"
-
+MODEL = ARCH_EVAL_MODEL
 CLIENT = Together(api_key=TOGETHER_API_KEY)
-
 DATA_PATH = "classify3_eval.jsonl"
 
 def get_model_response(prompt):
