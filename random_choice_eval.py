@@ -1,4 +1,4 @@
-#Calculation of what the scores would be if a random model was picked each time
+# Calculation of what the scores would be if a random model was picked each time
 
 import json
 import random
@@ -59,4 +59,3 @@ with open(new_file_path, 'w') as jsonl_file:
                             "other_correct": str(other_correct),
                             })
     jsonl_file.write(json_line + '\n')
-

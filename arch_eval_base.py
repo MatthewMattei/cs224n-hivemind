@@ -1,4 +1,3 @@
-# Imports
 from together import Together
 from keys import TOGETHER_API_KEY
 import json

@@ -1,4 +1,3 @@
-# Imports
 import json
 
 DATA_PATH = "BASE_EVALS.jsonl"

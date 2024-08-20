@@ -5,7 +5,8 @@ import math
 
 barWidth = 0.2
 
-# Finetuned Models - Subject Based Accuracy
+# Finetuned Models - Subject-Based Accuracy
+
 plt.figure(1)
 fig = plt.subplots(figsize = (8, 6))
 
@@ -65,7 +66,7 @@ plt.xticks([r for r in range(len(humanities_model))], labels)
 plt.ylim(top=1000)
 plt.savefig("figures/Finetuned Models - Total")
 
-# Baseline, Mega-Model Subject-Based
+# Baseline Model & Mega-Model - Subject-Based Accuracy
 
 plt.figure(3)
 fig = plt.subplots(figsize = (8, 6))
@@ -93,7 +94,7 @@ plt.ylim(top=250)
 plt.legend()
 plt.savefig("figures/Baseline Model and Mega-Model - Subject-Based Accuracy")
 
-# Baseline, Mega-Model, Classifier Total Accuracy
+# Baseline Model, Mega-Model, Classifier - Total Accuracy
 
 plt.figure(4)
 fig = plt.subplots(figsize = (8, 6))
@@ -119,7 +120,7 @@ plt.xticks([r for r in range(len(values))], labels)
 plt.ylim(top=1000)
 plt.savefig("figures/Baseline Model, Mega-Model, Classifier - Total")
 
-# Classifier
+# Classifier - Subject-Based Accuracy
 
 plt.figure(5)
 fig = plt.subplots(figsize = (8, 6))
@@ -187,7 +188,7 @@ plt.xticks([r for r in range(len(humanities_model))], labels)
 plt.ylim(top=300)
 plt.savefig("figures/Perfect Pipeline - Subject-Based Accuracy")
 
-# Random Choice, Random Choice Consensus, Random Choice Total Consensus - Subject-Based Accuracy
+# Random Classifier, Random Majority Classifier, Majority Classifier - Subject-Based Accuracy
 
 plt.figure(7)
 fig = plt.subplots(figsize = (8, 6))
@@ -224,7 +225,7 @@ plt.ylim(top=1000)
 plt.legend()
 plt.savefig("figures/Random Figures")
 
-# Random Choice, Random Choice Consensus, Random Choice Total Consensus - Total Accuracy
+# Random Classifier, Random Majority Classifier, Majority Classifier - Total Accuracy
 
 plt.figure(8)
 fig = plt.subplots(figsize = (8, 6))
@@ -250,7 +251,7 @@ plt.xticks([r for r in range(len(values))], labels)
 plt.ylim(top=1000)
 plt.savefig("figures/Random Figures - Total")
 
-# Third Classifier
+# Classifier 2.0 - Subject-Based Accuracy
 
 plt.figure(9)
 fig = plt.subplots(figsize = (8, 6))

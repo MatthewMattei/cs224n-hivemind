@@ -1,4 +1,3 @@
-# Imports
 import json
 
 paths = ["processed_CLASSIFIER_EVALS.jsonl", "processed_STEM_EVALS.jsonl", "processed_HUMANITIES_EVALS.jsonl", "processed_SOCIAL_SCIENCES_EVALS.jsonl", "processed_OTHER_EVALS.jsonl"]

@@ -1,4 +1,4 @@
-#Calculation of what the scores would be if a consensus between three random models is picked
+# Calculation of what the scores would be if a consensus between three random models is picked
 
 import json
 import random
@@ -34,7 +34,6 @@ def determine_consensus(choice1, answer1, choice2, answer2, choice3, answer3):
         for i in range(3):
             if answers[i] == str(consensus):
                 return choices[i]
-
 
 for i in range(5):
     mega_lines.append(open(paths[i], 'r').readlines())
@@ -85,4 +84,3 @@ with open(new_file_path, 'w') as jsonl_file:
                             "other_correct": str(other_correct),
                             })
     jsonl_file.write(json_line + '\n')
-

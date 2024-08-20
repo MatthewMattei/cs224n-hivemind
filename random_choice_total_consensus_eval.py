@@ -1,4 +1,4 @@
-#Calculation of what the scores would be if a consensus between all four models is picked
+# Calculation of what the scores would be if a consensus between all four models is picked
 
 import json
 import random
@@ -83,4 +83,3 @@ with open(new_file_path, 'w') as jsonl_file:
                             "other_correct": str(other_correct),
                             })
     jsonl_file.write(json_line + '\n')
-

@@ -1,4 +1,3 @@
-# Imports
 from together import Together
 from keys import TOGETHER_API_KEY
 import json
@@ -39,4 +38,3 @@ with open(jsonl_file_path, 'w') as jsonl_file:
             jsonl_file.write(json_line + '\n')
     
 print(f"Results saved to {jsonl_file_path}")
-
